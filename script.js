@@ -33,32 +33,32 @@ function playRound(humanChoice, computerChoice) {
    let decision
    let playerScore = 0;
    let computerScore = 0;
-   if ((humanChoice === "Rock" || humanChoice === "rock") && computerChoice === 0)
+   if ((humanChoice.toLowerCase() === "rock") && computerChoice === 0)
       decision = "You both picked rock - Draw ";
-   else if ((humanChoice === "Rock" || humanChoice === "rock") && computerChoice === 1) {
+   else if ((humanChoice === "rock") && computerChoice === 1) {
       decision = "You picked rock computer picked paper - Computer takes the round"
       computerScore++
    }
-   else if ((humanChoice === "Rock" || humanChoice === "rock") && computerChoice === 2) {
+   else if ((humanChoice.toLowerCase() === "rock") && computerChoice === 2) {
       decision = "You picked rock computer picked paper - Player takes the round"
       playerScore++
    }
-   else if ((humanChoice === "paper" || humanChoice === "Paper") && computerChoice === 0) {
+   else if ((humanChoice.toLowerCase() === "paper") && computerChoice === 0) {
       decision = "You picked paper , computer picked rock-Player takes the round"
       playerScore++
    }
-   else if ((humanChoice === "paper" || humanChoice === "Paper") && computerChoice === 1) {
+   else if ((humanChoice.toLowerCase() === "paper") && computerChoice === 1) {
       decision = "You both picked paper - Draw";
    }
-   else if ((humanChoice === "paper" || humanChoice === "Paper") && computerChoice === 2) {
+   else if ((humanChoice.toLowerCase() === "paper") && computerChoice === 2) {
       decision = "You picked paper , computer picked scissors - Computer takes the round"
       computerScore++
    }
-   else if ((humanChoice === "Scissors" || humanChoice === "scissors") && computerChoice === 0) {
+   else if ((humanChoice.toLowerCase() === "scissors") && computerChoice === 0) {
       decision = "You picked scissors , computer picked rock - Computer takes the round"
       computerScore++
    }
-   else if ((humanChoice === "Scissors" || humanChoice === "scissors") && computerChoice === 1) {
+   else if ((humanChoice.toLowerCase() === "scissors") && computerChoice === 1) {
       decision = "You picked scissors , computer picked paper - PLayer takes the round"
       playerScore++
    }
