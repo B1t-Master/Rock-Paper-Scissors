@@ -16,6 +16,7 @@
    */
 let humanChoice;
 let computerChoice;
+let totalComputerScore, totalPlayerScore, playerScore, computerScore;
 let rounds = prompt("How many rounds do you want to play?",);
 parseInt(rounds);
 
@@ -31,8 +32,8 @@ function getComputerChoice(choice) {
 
 function playRound(humanChoice, computerChoice) {
    let decision
-   let playerScore = 0;
-   let computerScore = 0;
+   playerScore = 0;
+   computerScore = 0;
    if ((humanChoice.toLowerCase() === "rock") && computerChoice === 0)
       decision = "You both picked rock - Draw ";
    else if ((humanChoice === "rock") && computerChoice === 1) {
@@ -65,6 +66,8 @@ function playRound(humanChoice, computerChoice) {
    else {
       decision = "You both picked scissors - Draw"
    }
+   totalComputerScore = computerScore;
+   totalPlayerScore = playerScore;
    console.log(decision);
 
    if (computerScore > playerScore)
@@ -84,6 +87,17 @@ function playGame() {
 for (i = 1; i <= rounds; i++) {
    playGame()
 }
+
+if (totalComputerScore > totalPlayerScore)
+   alert(`Computer 👾 
+wins the league 🏆`);
+else if (totalPlayerScore > totalComputerScore)
+   alert(`Player 🧑‍💻 
+wins the league 🏆`);
+else
+   alert(`See ya next season.. 
+for the rematch`);
+
 
 
 
