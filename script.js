@@ -81,8 +81,8 @@ function playRound(humanChoice, computerChoice) {
       console.log("No one wins,It's a tie")
    matchResults.textContent = decision;
    results.appendChild(matchResults);
-   displayComputerScore.textContent = totalComputerScore;
-   displayPlayerScore.textContent = totalPlayerScore;
+   displayComputerScore.textContent = "Computer Score: " + totalComputerScore;
+   displayPlayerScore.textContent = "Player Score: " + totalPlayerScore;
    results.appendChild(displayPlayerScore);
    results.appendChild(displayComputerScore);
 
@@ -94,7 +94,6 @@ results = document.querySelector('div');
 let score = document.createElement('div');
 let displayPlayerScore = document.createElement('div');
 let displayComputerScore = document.createElement('div');
-
 
 
 btn.forEach((btn) => {
