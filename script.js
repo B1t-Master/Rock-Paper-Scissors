@@ -17,55 +17,58 @@
 let humanChoice;
 let computerChoice;
 let totalComputerScore, totalPlayerScore, playerScore, computerScore;
-let rounds = prompt("How many rounds do you want to play?",);
+/*let rounds = prompt("How many rounds do you want to play?",);
 parseInt(rounds);
+*/
 
+/*function gethumanChoice(choice) {
+   alert("Choose your choice");
+   return choice = btn.id;
 
-function getHumanChoice(choice) {
-   return choice = prompt("Enter your choice Rock🪨 Paper📄 or Scissors✂️",);
-
-}
+}*/
 
 function getComputerChoice(choice) {
    return choice = Math.round((Math.random() * 2));
 }
 
+playerScore = 0;
+computerScore = 0;
+
 function playRound(humanChoice, computerChoice) {
    let decision
-   playerScore = 0;
-   computerScore = 0;
-   if ((humanChoice.toLowerCase() === "rock") && computerChoice === 0)
+   if ((humanChoice === "rock") && computerChoice === 0)
       decision = "You both picked rock - Draw ";
    else if ((humanChoice === "rock") && computerChoice === 1) {
       decision = "You picked rock computer picked paper - Computer takes the round"
       computerScore++
    }
-   else if ((humanChoice.toLowerCase() === "rock") && computerChoice === 2) {
+   else if ((humanChoice === "rock") && computerChoice === 2) {
       decision = "You picked rock computer picked paper - Player takes the round"
       playerScore++
    }
-   else if ((humanChoice.toLowerCase() === "paper") && computerChoice === 0) {
+   else if ((humanChoice === "paper") && computerChoice === 0) {
       decision = "You picked paper , computer picked rock-Player takes the round"
       playerScore++
    }
-   else if ((humanChoice.toLowerCase() === "paper") && computerChoice === 1) {
+   else if ((humanChoice === "paper") && computerChoice === 1) {
       decision = "You both picked paper - Draw";
    }
-   else if ((humanChoice.toLowerCase() === "paper") && computerChoice === 2) {
+   else if ((humanChoice === "paper") && computerChoice === 2) {
       decision = "You picked paper , computer picked scissors - Computer takes the round"
       computerScore++
    }
-   else if ((humanChoice.toLowerCase() === "scissors") && computerChoice === 0) {
+   else if ((humanChoice === "scissors") && computerChoice === 0) {
       decision = "You picked scissors , computer picked rock - Computer takes the round"
       computerScore++
    }
-   else if ((humanChoice.toLowerCase() === "scissors") && computerChoice === 1) {
-      decision = "You picked scissors , computer picked paper - PLayer takes the round"
+   else if ((humanChoice === "scissors") && computerChoice === 1) {
+      decision = "You picked scissors , computer picked paper - Player takes the round"
       playerScore++
    }
    else {
       decision = "You both picked scissors - Draw"
    }
+
    totalComputerScore = computerScore;
    totalPlayerScore = playerScore;
    console.log(decision);
@@ -76,30 +79,46 @@ function playRound(humanChoice, computerChoice) {
       console.log("Player wins")
    else
       console.log("No one wins,It's a tie")
+   matchResults.textContent = decision;
+   results.appendChild(matchResults);
+   displayComputerScore.textContent = totalComputerScore;
+   displayPlayerScore.textContent = totalPlayerScore;
+   results.appendChild(displayPlayerScore);
+   results.appendChild(displayComputerScore);
+
 }
 
-function playGame() {
-   computerChoice = getComputerChoice();
-   humanChoice = getHumanChoice()
-   playRound(humanChoice, computerChoice);
-}
-
-for (i = 1; i <= rounds; i++) {
-   playGame()
-}
-
-if (totalComputerScore > totalPlayerScore)
-   alert(`Computer 👾 
-wins the league 🏆`);
-else if (totalPlayerScore > totalComputerScore)
-   alert(`Player 🧑‍💻 
-wins the league 🏆`);
-else
-   alert(`See ya next season.. 
-for the rematch`);
+btn = document.querySelectorAll("button");
+let matchResults = document.createElement('div')
+results = document.querySelector('div');
+let score = document.createElement('div');
+let displayPlayerScore = document.createElement('div');
+let displayComputerScore = document.createElement('div');
 
 
 
+btn.forEach((btn) => {
+   btn.addEventListener("click", (e) => {
+      computerChoice = getComputerChoice();
+      humanChoice = btn.id;
+      playRound(humanChoice, computerChoice);
+      if (computerScore === 5 || playerScore === 5) {
+         if (totalComputerScore > totalPlayerScore)
+            alert(`Computer 👾 
+         wins the league 🏆`);
+         else if (totalPlayerScore > totalComputerScore)
+            alert(`Player 🧑‍💻 
+         wins the league 🏆`);
+         else
+            alert(`See ya next season.. 
+         for the rematch`);
+
+         computerScore = 0;
+         playerScore = 0;
+         e.preventDefault();
+      }
+   });
+});
 
 
 
